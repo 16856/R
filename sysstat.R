@@ -125,3 +125,10 @@ sysstat[name=='physical write total bytes',bytes:= physical.write.total.bytes]
 
 sysstat[,datetime := ymd_hms(datetime)]
 head(sysstat)
+
+library(ggplot2)
+library(Cairo)
+
+Cairo(600, 600, file="plot.png", type="png", bg="white")
+ggplot(sysstat, mapping= aes(x = datetime, y = bytes/1024, color=factor(name))) + geom_line()
+dev.off() 
