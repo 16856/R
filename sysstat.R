@@ -129,6 +129,23 @@ head(sysstat)
 library(ggplot2)
 library(Cairo)
 
-Cairo(600, 600, file="plot.png", type="png", bg="white")
+# Cairo
+#Cairo(600, 600, file="plot.png", type="png", bg="white")
+
+# PNG
+#png(file="plot5.png",width=640,height=480)
+
+# Cairo PNG
+#CairoPNG(file="Cairo5.png",width=640,height=480)
+
+# SVG  
+#svg(file="plot-svg5.svg",width=6,height=6)
+
+# CairoSVG
+CairoSVG(file="Cairo-svg5.svg",width=6,height=6)
+
 ggplot(sysstat, mapping= aes(x = datetime, y = bytes/1024, color=factor(name))) + geom_line()
 dev.off() 
+
+# ggplot2::ggsave 保存
+#ggsave( file = "mtcars_plot.png", width = 5, height = 6, type = "cairo", dpi = 600)
